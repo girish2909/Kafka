@@ -1,6 +1,29 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/outbox_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   kafka:
     bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: group1
+      auto-offset-reset: earliest
+
+    listener:
+      ack-mode: record
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 pih:
   custom:
