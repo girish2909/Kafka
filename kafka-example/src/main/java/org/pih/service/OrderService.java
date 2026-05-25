@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-// यह DB से events उठाकर Kafka में भेजता है
 @Service
 public class OrderService {
 

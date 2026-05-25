@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
+// यह DB से events उठाकर Kafka में भेजता है
 public class OutboxScheduler {
 
     @Autowired
