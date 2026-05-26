@@ -21,7 +21,7 @@ public class DLQConsumer {
     @KafkaListener(topics = "order-topic-dlq", groupId = "dlq-group")
     public void consumeDLQ(
             String message,
-            @Header(value = KafkaHeaders.RECEIVED_TOPIC, required = false) String topic,
+            @Header(value = KafkaHeaders.DLT_ORIGINAL_TOPIC, required = false) String topic,
             @Header(value = "kafka_dlt-exception-message", required = false) String exceptionMessage) {
 
         log.error("🚨 Received message in DLQ from topic [{}]. Reason: {}", topic, exceptionMessage);

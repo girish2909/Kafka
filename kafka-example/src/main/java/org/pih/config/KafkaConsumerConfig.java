@@ -54,7 +54,7 @@ public class KafkaConsumerConfig {
         DeadLetterPublishingRecoverer recoverer =
                 new DeadLetterPublishingRecoverer(
                         template,
-                        (record, ex) -> new TopicPartition("order-topic-dlq", record.partition())
+                        (record, ex) -> new TopicPartition(record.topic() + "-dlq", record.partition())
                 );
 
         // Retry 3 times with 2 sec gap
